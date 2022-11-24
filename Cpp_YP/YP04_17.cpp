@@ -14,6 +14,7 @@ int main()
     cout << "int ";                                      // значение и расположение int
     
     cout << "value = " << *pt << ": location = " << pt << endl;
+    
     double * pd = new double;       // выделение пространства double
     *pd = 10000001.0;               // сохранение в нем значения double
     cout << "double ";
