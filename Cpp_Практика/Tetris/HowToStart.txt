@@ -1,0 +1,13 @@
+
+
+компиляция в терминале
+g++ -c main.cpp   // создастся файл main.o
+
+g++ main.o -o main -lsfml-graphics -lsfml-window -lsfml-system
+// создастся файл main
+
+запуск  в терминале
+./main
+
+сокращенный вариант запуска в терминале
+g++ main.o -o main -lsfml-graphics -lsfml-window -lsfml-system && ./main
