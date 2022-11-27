@@ -14,7 +14,7 @@ struct Point
 
 int figures[7][4] =
     {
-        1, 3, 4, 7, // I
+        1, 3, 5, 7, // I
         2, 4, 5, 7, // Z
         3, 5, 4, 6, // S
         3, 5, 4, 7, // T
@@ -42,11 +42,14 @@ int main()
 
   RenderWindow window(VideoMode(320, 480), "The Game!");
 
-  Texture t;
-  t.loadFromFile("images/tiles.png");
+  Texture t1, t2, t3;
+  t1.loadFromFile("images/tiles.png");
+  t2.loadFromFile("images/background.png");
+  t3.loadFromFile("images/frame.png");
 
-  Sprite s(t);
-  s.setTextureRect(IntRect(0, 0, 18, 18));
+  Sprite s(t1), background(t2), frame(t3);
+  
+  // s.setTextureRect(IntRect(0, 0, 18, 18));
 
   int dx = 0;
   bool rotate = 0;
@@ -75,6 +78,9 @@ int main()
         else if (e.key.code == Keyboard::Right)
           dx = 1;
     }
+
+    if (Keyboard::isKeyPressed(Keyboard::Down))
+      delay = 0.05;
 
     ////// <- Move -> /////
     for (int i = 0; i < 4; i++)
@@ -128,36 +134,58 @@ int main()
       timer = 0;
     }
 
-    int n = 3;
-    if (a[0].x = 0)
-      for (int i = 0; i < 4; i++)
+    // int n = 3;
+    // if (a[0].x = 0)
+    //   for (int i = 0; i < 4; i++)
+    //   {
+    //     a[i].x = figures[n][i] % 2;
+    //     a[i].y = figures[n][i] / 2;
+    //   }
+
+    ///// check lines //////
+    int k = M - 1;
+    for (int i = M - 1; i > 0; i--)
+    {
+      int count = 0;
+      for (int j = 0; j < N; j++)
       {
-        a[i].x = figures[n][i] % 2;
-        a[i].y = figures[n][i] / 2;
+        if (field[i][j])
+          count++;
+        field[k][j] = field[i][j];
       }
+      if (count < N)
+        k--;
+    }
 
     dx = 0;
     rotate = 0;
+    delay = 0.3;
 
     //// draw/////
 
     window.clear(Color::White);
+    window.draw(background);
 
     for (int i = 0; i < M; i++)
       for (int j = 0; j < N; j++)
       {
         if (field[i][j] == 0)
           continue;
+        s.setTextureRect(IntRect(field[i][j] * 18, 0, 18, 18));
         s.setPosition(j * 18, i * 18);
+        s.move(28, 31); // offset
         window.draw(s);
       }
 
     for (int i = 0; i < 4; i++)
     {
+      s.setTextureRect(IntRect(colorNum * 18, 0, 18, 18));
       s.setPosition(a[i].x * 18, a[i].y * 18);
+      s.move(28, 31); // offset
       window.draw(s);
     }
 
+    window.draw(frame);
     window.display();
   }
 
