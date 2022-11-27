@@ -1,13 +1,15 @@
 
-
-компиляция в терминале
+# Запуск в Linux
+1) компиляция в терминале
 g++ -c main.cpp   // создастся файл main.o
 
+2) запуск  в терминале
+сначала это
 g++ main.o -o main -lsfml-graphics -lsfml-window -lsfml-system
 // создастся файл main
 
-запуск  в терминале
+потом это
 ./main
 
-сокращенный вариант запуска в терминале
+или сокращенный вариант запуска в терминале
 g++ main.o -o main -lsfml-graphics -lsfml-window -lsfml-system && ./main
