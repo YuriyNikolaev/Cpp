@@ -1,3 +1,6 @@
+// игра Тетрис
+// взял здесь https://youtu.be/zH_omFPqMO4
+
 #include <SFML/Graphics.hpp>
 #include <time.h>
 using namespace sf;
