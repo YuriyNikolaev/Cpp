@@ -3,10 +3,18 @@
 
 using namespace std;
 
+
 int main()
 {
-  array<int, 5> ai; // создание объекта array из 5ти элементов int
-  array<double, 4> ad = {1.2, 2.1, 3.43, 4.3};
+
+  double ted;
+
+  double * p_ted = &ted;
+
+  *p_ted = 2.0;
+
+  cout << "*p_ted" << *p_ted;
+
 
   return 0;
 }
