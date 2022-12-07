@@ -16,6 +16,8 @@ int main()
     cout << " ! What's your name?/n";
     cin >> name1;
     cout << "Well, " << name1 << ", yor name has ";
+
+    // вывод длины имени
     cout << strlen(name1) << " letters and is stored\n";
     cout << "in array of " << sizeof(name1) << " bytes.\n";
     cout << "Your initial is " << name1[0] << ".\n";
