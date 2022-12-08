@@ -12,7 +12,7 @@ int main()
     cout << "Enter your name:\n";   // запрос имени
     cin >> name;
     cout << "Enter your favorite dessert:\n";  // запрос любимого десерта
-    cin >> dessert;
+    cin >> dessert;  // пропускает запрос и сразу выводит I have some delicious
     cout<< "I have some delicious " << dessert;
     cout << " for you, " << name << ".\n";
 
